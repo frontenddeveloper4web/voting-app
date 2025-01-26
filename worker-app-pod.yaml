@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-app-pod
+  labels:
+    name: worker-app-pod
+    app: demo-voting-app
+spec: 
+  containers:
+    - name: worker-app
+      image: kodekloud/examplevotingapp_worker:v1
+      env:
+        - name: DB_HOST
+          value: "db"  # This is the name of the postgres service
+        - name: DB_USER
+          value: "postgres"  # Database user from postgres-pod.yaml
+        - name: DB_PASSWORD
+          value: "postgres"  # Database password from postgres-pod.yaml
+        - name: DB_NAME
+          value: "postgres"  # Default database name
